@@ -15,7 +15,7 @@ public class Configuracoes extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.configuracoes);
+        setContentView(R.layout.activity_configuracoes);
 
         voltar = (Button)(findViewById(R.id.btVoltarConfiguracoes));
         laCocina = (ImageButton) (findViewById(R.id.ibLaCocinaConfiguracoes));
@@ -29,7 +29,7 @@ public class Configuracoes extends AppCompatActivity implements View.OnClickList
         if (view == voltar){
             finish();
         }else if (view == laCocina) {
-            Intent inicio = new Intent(Configuracoes.this, Pesquisar.class);
+            Intent inicio = new Intent(Configuracoes.this, Main.class);
             startActivity(inicio);
         }
     }

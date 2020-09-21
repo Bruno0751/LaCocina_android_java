@@ -16,7 +16,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
 
         entrar = (Button)(findViewById(R.id.btEntrar));
         laCocina = (ImageButton)(findViewById(R.id.ibLaCocinaLogin));
@@ -28,12 +28,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view == entrar){
-            Intent pesquisa = new Intent(Login.this, Pesquisar.class);
+            Intent pesquisa = new Intent(Login.this, Main.class);
             Toast msg = Toast.makeText(Login.this, "Bem Vindo", Toast.LENGTH_LONG);
             startActivity(pesquisa);
             msg.show();
         }else if (view == laCocina) {
-            Intent inicio = new Intent(Login.this, Pesquisar.class);
+            Intent inicio = new Intent(Login.this, Main.class);
             startActivity(inicio);
         }
     }

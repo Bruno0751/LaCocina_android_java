@@ -29,7 +29,7 @@ public class Sobre extends AppCompatActivity implements View.OnClickListener {
         if (view == voltar){
             finish();
         }else if (view == laCocina) {
-            Intent inicio = new Intent(Sobre.this, Pesquisar.class);
+            Intent inicio = new Intent(Sobre.this, Main.class);
             startActivity(inicio);
         }
     }

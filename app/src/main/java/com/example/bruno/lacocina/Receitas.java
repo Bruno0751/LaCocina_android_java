@@ -15,20 +15,14 @@ import android.widget.TextView;
 public class Receitas extends AppCompatActivity implements View.OnClickListener {
 
     private TextView arroz, bolo, frango , lasanha;
-    private ImageButton arrozI, boloI, frangoI, lasanhaI, ir, voltar, laCocina;
+    private ImageButton imgArroz, imgBolo, imgFrango, imgLasanha, imgIr, imgVoltar, imgLaCocina;
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inf = getMenuInflater();
         inf.inflate(R.menu.menu_receitas, menu);
         return super.onCreateOptionsMenu(menu);
 
-        //https://receitas.ig.com.br/arroz-a-grega/4e7b323d7bb4e2ad5c00003c.html
-        //https://www.receitasdemae.com.br/receitas/frango-a-kiev/
-        //https://www.receitadevovo.com.br/receitas/bolo-de-trigo-fofinho
-        //http://www.receitadetapioca.com.br/tapioca-com-banana-e-chocolate/
-        //https://cybercook.uol.com.br/receita-de-lasanha-a-bolonhesa-r-5-3876.html
-        //http://pensarcomida.blogspot.com/2013/05/receita-do-dia-panquecas.html
-        //http://gshow.globo.com/receitas-gshow/receita/peixe-ensopado-535048aa4d38854185000046.html
     }
 
     @Override
@@ -60,54 +54,78 @@ public class Receitas extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.receitas);
 
-        lasanha = (TextView)(findViewById(R.id.tvLasanha));
         arroz = (TextView)(findViewById(R.id.tvArroz));
-        frango = (TextView)(findViewById(R.id.tvFrango));
+        imgArroz = (ImageButton)(findViewById(R.id.ibArrozReceitas1));
+
         bolo = (TextView)(findViewById(R.id.tvBolo));
-        arrozI = (ImageButton)(findViewById(R.id.ibArrozReceitas1));
-        boloI = (ImageButton)(findViewById(R.id.ibBoloReceitas1));
-        lasanhaI = (ImageButton)(findViewById(R.id.ibLasanhaReceitas1));
-        frangoI = (ImageButton)(findViewById(R.id.ibFrangoReceitas1));
-        ir = (ImageButton)(findViewById(R.id.ibIrReceitas));
-        voltar = (ImageButton)(findViewById(R.id.ibVoltarReceitas));
-        laCocina = (ImageButton) (findViewById(R.id.ibLaCocinaReceitas1));
+        imgBolo = (ImageButton)(findViewById(R.id.ibBoloReceitas1));
+
+        frango = (TextView)(findViewById(R.id.tvFrango));
+        imgFrango = (ImageButton)(findViewById(R.id.ibFrangoReceitas1));
+
+        imgLasanha = (ImageButton)(findViewById(R.id.ibLasanhaReceitas1));
+        lasanha = (TextView)(findViewById(R.id.tvLasanha));
+
+        imgIr = (ImageButton)(findViewById(R.id.ibIrReceitas));
+        imgVoltar = (ImageButton)(findViewById(R.id.ibVoltarReceitas));
+        imgLaCocina = (ImageButton) (findViewById(R.id.ibLaCocinaReceitas1));
+
+        arroz.setOnClickListener(this);
+        imgArroz.setOnClickListener(this);
+
+        frango.setOnClickListener(this);
+        imgFrango.setOnClickListener(this);
+
+        bolo.setOnClickListener(this);
+        imgBolo.setOnClickListener(this);
 
         lasanha.setOnClickListener(this);
-        arroz.setOnClickListener(this);
-        frango.setOnClickListener(this);
-        bolo.setOnClickListener(this);
-        boloI.setOnClickListener(this);
-        frangoI.setOnClickListener(this);
-        arrozI.setOnClickListener(this);
-        lasanhaI.setOnClickListener(this);
-        voltar.setOnClickListener(this);
-        ir.setOnClickListener(this);
-        laCocina.setOnClickListener(this);
+        imgLasanha.setOnClickListener(this);
+
+        imgVoltar.setOnClickListener(this);
+        imgIr.setOnClickListener(this);
+        imgLaCocina.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if (view == arrozI){
-            mArroz("receitas.ig.com.br/arroz-a-grega/4e7b323d7bb4e2ad5c00003c.html");
-        }else if (view == boloI){
-            mBolo("www.receitadevovo.com.br/receitas/bolo-de-trigo-fofinho");
-        }else if (view == frangoI){
-            mFrango("hudson-sapore.blogspot.com/2012/06/frango-kiev.html");
-        }else if (view == lasanhaI) {
-            mLasanha("cybercook.uol.com.br/receita-de-lasanha-a-bolonhesa-r-5-3876.html");
-        }else if (view == ir){
+        if (view == imgArroz){
+            abrirArroz("receitas.ig.com.br/arroz-a-grega/4e7b323d7bb4e2ad5c00003c.html");
+        }else if (view == imgBolo){
+            abrirBolo("www.receitadevovo.com.br/receitas/bolo-de-trigo-fofinho");
+        }else if (view == imgFrango){
+            abrirFrango("hudson-sapore.blogspot.com/2012/06/frango-kiev.html");
+        }else if (view == imgLasanha) {
+            abrirLasanha("cybercook.uol.com.br/receita-de-lasanha-a-bolonhesa-r-5-3876.html");
+        }else if (view == imgIr){
             Intent receita = new Intent(Receitas.this, Receitas2.class);
             startActivity(receita);
-        }else if (view == voltar){
+        }else if (view == imgVoltar){
             Intent receita = new Intent(Receitas.this, Receitas2.class);
             startActivity(receita);
-        }else if (view == laCocina){
-            Intent inicio = new Intent(Receitas.this, Pesquisar.class);
+        }else if (view == imgLaCocina){
+            Intent inicio = new Intent(Receitas.this, Main.class);
             startActivity(inicio);
         }
     }
 
-    private void mFrango(String uFrango) {
+    private void abrirArroz(String url) {
+        if (!url.startsWith("http://")){
+            url = "http://" + url;            }
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
+
+    private void abrirBolo(String boloU) {
+        if (!boloU.startsWith("http://")){
+            boloU = "http://" + boloU;            }
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(boloU));
+        startActivity(intent);
+    }
+
+    private void abrirFrango(String uFrango) {
         if (!uFrango.startsWith("guiadacozinha.com.br/guacamole-original/")){
             uFrango = "http://" + uFrango;
         }
@@ -116,24 +134,8 @@ public class Receitas extends AppCompatActivity implements View.OnClickListener 
         startActivity(intent);
     }
 
-    private void mBolo(String boloU) {
-        if (!boloU.startsWith("guiadacozinha.com.br/guacamole-original/")){
-            boloU = "http://" + boloU;            }
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(boloU));
-        startActivity(intent);
-    }
-
-    private void mArroz(String url) {
-        if (!url.startsWith("guiadacozinha.com.br/guacamole-original/")){
-            url = "http://" + url;            }
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(url));
-        startActivity(intent);
-    }
-
-    private void mLasanha(String url) {
-        if (!url.startsWith("guiadacozinha.com.br/guacamole-original/")){
+    private void abrirLasanha(String url) {
+        if (!url.startsWith("http://")){
             url = "http://" + url;            }
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));

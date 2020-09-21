@@ -15,7 +15,7 @@ public class Entrada extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.entrada);
+        setContentView(R.layout.activity_entrada);
 
         email = (Button)(findViewById(R.id.btEmail));
         gmail = (Button)(findViewById(R.id.btGoogle));
@@ -34,7 +34,7 @@ public class Entrada extends AppCompatActivity implements View.OnClickListener {
             Intent log = new Intent(Entrada.this, Login.class);
             startActivity(log);
         }else if (view == laCocina){
-            Intent inicio = new Intent(Entrada.this, Pesquisar.class);
+            Intent inicio = new Intent(Entrada.this, Main.class);
             startActivity(inicio);
         }
     }

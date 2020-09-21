@@ -48,7 +48,7 @@ public class Receitas2 extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.receitas2);
+        setContentView(R.layout.activity_receitas2);
 
         volta = (ImageButton)(findViewById(R.id.ibVoltarReceitas));
         ir = (ImageButton)(findViewById(R.id.ibIrReceitas));
@@ -84,7 +84,7 @@ public class Receitas2 extends AppCompatActivity implements View.OnClickListener
         }else if (view == feijoada){
             mFeijoada("www.comidaereceitas.com.br/carnes/feijoada-completa.html");
         }else if (view == laCocina) {
-            Intent inicio = new Intent(Receitas2.this, Pesquisar.class);
+            Intent inicio = new Intent(Receitas2.this, Main.class);
             startActivity(inicio);
         }
     }
